@@ -1,0 +1,53 @@
+name: income_pulse_117
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+  
+dependencies:
+  flutter:
+    sdk: flutter
+    
+  cupertino_icons: ^1.0.2
+  apphud: ^2.2.6
+  flutter_screenutil: ^5.9.0
+  shared_preferences: ^2.0.15
+  webview_flutter: ^4.4.2
+  smooth_page_indicator: ^1.1.0
+  intl: ^0.18.0
+  in_app_review: ^2.0.6
+  percent_indicator: ^4.2.3
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_staggered_grid_view: ^0.6.2
+  table_calendar: ^3.0.9
+  month_picker_dialog: ^2.0.2
+  collection: ^1.18.0
+  pie_chart: ^5.4.0
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+  flutter_lints: ^2.0.0
+  build_runner: ^2.2.0
+  hive_generator: ^2.0.1
+
+
+flutter:
+
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat.ttf
+        
