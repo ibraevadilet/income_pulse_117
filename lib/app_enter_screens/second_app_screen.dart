@@ -62,7 +62,7 @@ class SecondAppScreen extends StatelessWidget {
                               builder: (context) => const PulseWebScreen(
                                 title: 'Privacy policy',
                                 url:
-                                    'https://docs.google.com/document/d/1aOj5DbGhxOOucsbQ0YtKfFjoRt-8j60Bb4fhxDRa12U/edit?usp=sharing',
+                                    'https://sites.google.com/view/income-pulse/privacy-policy',
                               ),
                             ),
                           );
@@ -87,7 +87,7 @@ class SecondAppScreen extends StatelessWidget {
                               builder: (context) => const PulseWebScreen(
                                 title: 'User agreement',
                                 url:
-                                    'https://docs.google.com/document/d/1aOj5DbGhxOOucsbQ0YtKfFjoRt-8j60Bb4fhxDRa12U/edit?usp=sharing',
+                                    'https://sites.google.com/view/income-pulse/terms-conditions',
                               ),
                             ),
                           );

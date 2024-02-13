@@ -14,7 +14,7 @@ late Box<MoneySaveHiveModel> moneyBox;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await Apphud.start(apiKey: 'app_rhzmE4MhRQgHNZmn6RXBb48SZ4wzNn');
+  await Apphud.start(apiKey: 'app_MpqHUXMQa7vNG8n4ZfvEXJ4QzrzfSk');
   await Hive.initFlutter();
   Hive.registerAdapter(MoneySaveHiveModelAdapter());
   prefs = await SharedPreferences.getInstance();

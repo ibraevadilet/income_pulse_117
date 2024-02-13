@@ -53,7 +53,7 @@ class BuyScreen extends StatelessWidget {
                             builder: (context) => const PulseWebScreen(
                               title: 'Privacy Policy',
                               url:
-                                  'https://docs.google.com/document/d/1aOj5DbGhxOOucsbQ0YtKfFjoRt-8j60Bb4fhxDRa12U/edit?usp=sharing',
+                                  'https://sites.google.com/view/income-pulse/privacy-policy',
                             ),
                           ),
                         );
@@ -109,7 +109,7 @@ class BuyScreen extends StatelessWidget {
                                 CupertinoAlertDialog(
                               title: const Text('Restore purchase'),
                               content: const Text(
-                                  'Your purchase is not found. Write to support: urll'),
+                                  'Your purchase is not found. Write to support: https://sites.google.com/view/income-pulse/support-from'),
                               actions: [
                                 CupertinoDialogAction(
                                   isDefaultAction: true,
@@ -140,7 +140,7 @@ class BuyScreen extends StatelessWidget {
                             builder: (context) => const PulseWebScreen(
                               title: 'Terms of use',
                               url:
-                                  'https://docs.google.com/document/d/1aOj5DbGhxOOucsbQ0YtKfFjoRt-8j60Bb4fhxDRa12U/edit?usp=sharing',
+                                  'https://sites.google.com/view/income-pulse/terms-conditions',
                             ),
                           ),
                         );

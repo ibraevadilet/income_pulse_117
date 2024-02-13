@@ -1,3 +1,4 @@
+import 'package:apphud/apphud.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,8 +6,15 @@ import 'package:income_pulse_117/app_helpers/shared_keys.dart';
 import 'package:income_pulse_117/helper_screens/main_bottom_screen.dart';
 import 'package:income_pulse_117/main.dart';
 
-class PremComponent extends StatelessWidget {
+class PremComponent extends StatefulWidget {
   const PremComponent({super.key});
+
+  @override
+  State<PremComponent> createState() => _PremComponentState();
+}
+
+class _PremComponentState extends State<PremComponent> {
+  bool isBuying = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -105,13 +113,78 @@ class PremComponent extends StatelessWidget {
                   color: Colors.transparent,
                   padding: EdgeInsets.zero,
                   onPressed: () async {
-                    await prefs.setBool(AppSharedKeys.prem, true);
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => const MainBottomScreen(),
-                      ),
-                      (pred) => false,
+                    setState(() {
+                      isBuying = true;
+                    });
+                    final apphudPaywalls = await Apphud.paywalls();
+                    print(apphudPaywalls);
+
+                    await Apphud.purchase(
+                      product: apphudPaywalls?.paywalls.first.products?.first,
+                    ).whenComplete(
+                      () async {
+                        if (await Apphud.hasPremiumAccess() ||
+                            await Apphud.hasActiveSubscription()) {
+                          final hasPremiumAccess =
+                              await Apphud.hasPremiumAccess();
+                          final hasActiveSubscription =
+                              await Apphud.hasActiveSubscription();
+                          if (hasPremiumAccess || hasActiveSubscription) {
+                            prefs.setBool(AppSharedKeys.prem, true);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  CupertinoAlertDialog(
+                                title: const Text('Success!'),
+                                content: const Text(
+                                    'Your purchase has been restored!'),
+                                actions: [
+                                  CupertinoDialogAction(
+                                    isDefaultAction: true,
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) =>
+                                              const MainBottomScreen(),
+                                        ),
+                                        (route) => false,
+                                      );
+                                    },
+                                    child: const Text('Ok'),
+                                  ),
+                                ],
+                              ),
+                            );
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  CupertinoAlertDialog(
+                                title: const Text('Restore purchase'),
+                                content: const Text(
+                                    'Your purchase is not found. Write to support: https://docs.google.com/forms/d/e/1FAIpQLSe2dY5sixywVpTYU9K34aEqYi67rDquTx9XMeDZWeU2de_rag/viewform?usp=sf_link'),
+                                actions: [
+                                  CupertinoDialogAction(
+                                    isDefaultAction: true,
+                                    onPressed: () =>
+                                        {Navigator.of(context).pop()},
+                                    child: const Text('Ok'),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const MainBottomScreen(),
+                            ),
+                            (route) => false,
+                          );
+                        }
+                      },
                     );
                   },
                   child: Container(
