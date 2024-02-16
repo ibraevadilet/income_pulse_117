@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:income_pulse_117/app_enter_screens/first_app_screen.dart';
+import 'package:income_pulse_117/income/income_hive.dart';
 import 'package:income_pulse_117/models/money_save_hive_model/money_save_hive_model.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const fontFamily = 'Montserrat';
@@ -13,10 +15,12 @@ late final SharedPreferences prefs;
 late Box<MoneySaveHiveModel> moneyBox;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  OneSignal.initialize('b96443f0-b9cf-4c02-ab2e-1086c2c0d03b');
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Apphud.start(apiKey: 'app_MpqHUXMQa7vNG8n4ZfvEXJ4QzrzfSk');
   await Hive.initFlutter();
   Hive.registerAdapter(MoneySaveHiveModelAdapter());
+  Hive.registerAdapter(IncomeHiveAdapter());
   prefs = await SharedPreferences.getInstance();
   moneyBox = await Hive.openBox<MoneySaveHiveModel>('money');
   await initializeDateFormatting();

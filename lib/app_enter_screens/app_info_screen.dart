@@ -12,7 +12,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../helper_screens/main_bottom_screen.dart';
 
 class AppInfoScreen extends StatefulWidget {
-  const AppInfoScreen({super.key});
+  final String linkImage;
+  const AppInfoScreen({super.key, required this.linkImage});
 
   @override
   State<AppInfoScreen> createState() => _AppInfoScreenState();

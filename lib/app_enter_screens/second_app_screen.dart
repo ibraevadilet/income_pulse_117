@@ -104,7 +104,7 @@ class SecondAppScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     CupertinoPageRoute(
-                      builder: (context) => const AppInfoScreen(),
+                      builder: (context) => const AppInfoScreen(linkImage: '',),
                     ),
                   );
                 },
