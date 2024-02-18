@@ -23,6 +23,11 @@ class _FirstAppScreenState extends State<FirstAppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF232B45),
+        toolbarHeight: 0,
+        elevation: 0,
+      ),
       backgroundColor: const Color(0xFF232B45),
       body: Center(
         child: AnimatedOpacity(
