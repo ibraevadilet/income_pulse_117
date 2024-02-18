@@ -23,24 +23,18 @@ class _FirstAppScreenState extends State<FirstAppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF232B45),
       body: Center(
         child: AnimatedOpacity(
           duration: const Duration(milliseconds: 1000),
           opacity: incomePreepb == null ? 0 : 1,
           child: Image.asset(
             incomePreepb != null && incomePreepb!
-                ? 'assets/images/spl_image.png'//TODO: CHANGE IMAGE
+                ? 'assets/images/logoPo.png'
                 : 'assets/images/spl_image.png',
           ),
         ),
       ),
-      // body: SafeArea(
-      //   child: Center(
-      //     child: Image.asset(
-      //       'assets/images/spl_image.png',
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
